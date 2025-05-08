@@ -11,7 +11,7 @@ case "$servico-$acao" in
     dns-stop) docker-compose stop dns ;;
     dns-start) docker-compose up -d web ;;
     dns-start) docker-compose stop web ;;
-    # Execao por uso indevido
+    # Execao por uso inadequado
     *)
         echo "Comando invalido; Uso: $0 <dns|web> <start|stop>."
         exit 1
