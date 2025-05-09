@@ -1,0 +1,12 @@
+//
+// Do any local configuration here
+//
+
+zone "asa.br" {
+    type master;
+    file "/etc/bind/zones/db.asa.br";
+    allow-query { any; };
+};
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
