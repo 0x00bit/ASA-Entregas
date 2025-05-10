@@ -5,7 +5,7 @@
 zone "asa.br" {
     type master;
     file "/etc/bind/zones/db.asa.br";
-    allow-query { any; };
+    allow-query { 192.168.15.0/24; };
 };
 
 // Consider adding the 1918 zones here, if they are not used in your
