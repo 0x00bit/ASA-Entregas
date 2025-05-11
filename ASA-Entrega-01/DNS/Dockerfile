@@ -1,4 +1,6 @@
-FROM debian/bind9
+FROM ubuntu/bind9
+
+RUN mkdir -p /etc/bind/zones
 
 COPY named.conf.local /etc/bind/
 
