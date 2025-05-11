@@ -4,6 +4,12 @@
 '''Uso esperado do programa: ./service.sh <servico> <acao>'''
 servico=$1
 acao=$2
+caminho_abs="$(realpath "$0")"
+diretorio_abs="$(dirname "$caminho_abs")"
+
+# Building
+docker build -t web "$diretorio_abs/WEB"
+docker build -t dns "$diretorio_abs/DNS"
 
 # Executando o compose
 case "$servico-$acao" in
