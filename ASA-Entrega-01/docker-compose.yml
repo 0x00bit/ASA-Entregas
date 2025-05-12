@@ -5,7 +5,7 @@ services:
     image: debian/bind9
     container_name: bind9
     build:
-      context: ./dns
+      context: ./DNS
       dockerfile: Dockerfile
     ports:
       - "53:53/udp"
@@ -20,10 +20,10 @@ services:
     image: httpd:slim
     container_name: web-server
     build:
-      context: ./web
+      context: ./WEB
       dockerfile: Dockerfile
     ports:
-      - "80:80"       # Porta HTTP
+      - "80:80"
     volumes:
       - ./WEB/index.html:/usr/local/apache2/htdocs/index.html
     networks:
