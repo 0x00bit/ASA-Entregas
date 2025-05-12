@@ -9,8 +9,8 @@ acao=$2
 case "$servico-$acao" in
     dns-start) docker-compose up -d dns ;;
     dns-stop) docker-compose stop dns ;;
-    dns-start) docker-compose up -d web ;;
-    dns-start) docker-compose stop web ;;
+    web-start) docker-compose up -d web ;;
+    web-stop) docker-compose stop web ;;
     # Execao por uso inadequado
     *)
         echo "Comando invalido; Uso: $0 <dns|web> <start|stop>."
