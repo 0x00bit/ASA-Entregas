@@ -1,3 +1,5 @@
 FROM nginx:latest
 
-COPY ./index.html /usr/local/apache2/htdocs/
+RUN rm /usr/share/nginx/html/index.html
+
+COPY ./index.html /usr/share/nginx/html/
