@@ -1,0 +1,44 @@
+ 
+services:
+  dns:
+    build: 
+      context: ./dns-server
+      dockerfile: Dockerfile
+    container_name: dns
+    ports:
+      - "53:53/udp"
+    networks:
+      - asa-network
+
+  proxy:
+    build: 
+      context: ./proxy-server
+      dockerfile: Dockerfile
+    container_name: proxy
+    ports:
+      - "80:80/tcp"
+    depends_on:
+      - web-server
+    networks:
+      - asa-network
+
+  web-server:
+    build: 
+      context: ./01.web-server
+      dockerfile: Dockerfile
+    container_name: web
+    networks:
+      - asa-network
+
+  web-server2:
+    build: 
+      context: ./02.web-server
+      dockerfile: Dockerfile
+    container_name: web02
+    networks:
+      - asa-network
+
+#Docker Networks
+networks:
+  asa-network:
+    driver: bridge
