@@ -2,15 +2,17 @@
 // Do any local configuration here
 //
 
-zone "asa.br"{
+zone "asa.br" {
     type master;
-    file "/etc/bind/zones/db.asa.br";
-    allow-transfer {
-        127.0.0.1;
-        10.25.2.0/24;
-    };
+    file "/etc/bind/db.asa.br";
+    allow-query { any; };
 };
 
+zone "15.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.192.168.15";
+    allow-query { any; };
+};
 // Consider adding the 1918 zones here, if they are not used in your
 // organization
 //include "/etc/bind/zones.rfc1918";

@@ -1,18 +1,20 @@
+$TTL    604800
+@       IN      SOA     ns.asa.br. admin.asa.br. (
+                  3     ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800 )   ; Negative Cache TTL
 ;
-; BIND data file for asa.br zone
-;
-$TTL	604800
-@	IN	SOA	ns.asa.br. root.asa.br. (
-			      1		; Serial
-			 604800		; Refresh
-			  86400		; Retry
-			2419200		; Expire
-			 604800 )	; Negative Cache TTL
-;
-@		IN	NS	ns.
-@		IN	NS	ns.asa.br.
-@		IN	A	10.25.2.111
-www		IN	A	10.25.2.111
-portal	IN	CNAME	www
-julio	IN	CNAME	www
-magnus	IN	CNAME	www
+@       IN      NS      ns.asa.br.
+@       IN      A       192.168.15.100  ; IP do proxy-server na rede do host
+ns      IN      A       192.168.15.3    ; IP do dns-server na rede do host
+
+; Serviços na rede interna (containers)
+web     IN      A       172.21.0.2      ; IP do web container
+web02   IN      A       172.21.0.3      ; IP do web02 container
+
+; Registros para os virtual hosts do proxy
+www     IN      CNAME   asa.br.
+julio   IN      A       192.168.15.100  ; Aponta para o proxy
+magnus  IN      A       192.168.15.100  ; Aponta para o proxy
