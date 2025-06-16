@@ -1,44 +1,41 @@
- 
+#Docker Networks
+networks:
+  asa-network:
+    driver: bridge
 services:
   dns:
     build: 
-      context: ./dns-server
+      context: ./dns
       dockerfile: Dockerfile
     container_name: dns
     ports:
       - "53:53/udp"
-    networks:
-      - asa-network
 
   proxy:
     build: 
-      context: ./proxy-server
+      context: ./proxy
       dockerfile: Dockerfile
     container_name: proxy
     ports:
       - "80:80/tcp"
     depends_on:
-      - web-server
+      - web1
+      - web2
     networks:
       - asa-network
 
-  web-server:
+  web1:
     build: 
-      context: ./01.web-server
+      context: ./web1
       dockerfile: Dockerfile
-    container_name: web
+    container_name: web1
     networks:
       - asa-network
 
-  web-server2:
+  web2:
     build: 
-      context: ./02.web-server
+      context: ./web2
       dockerfile: Dockerfile
-    container_name: web02
+    container_name: web2
     networks:
       - asa-network
-
-#Docker Networks
-networks:
-  asa-network:
-    driver: bridge
