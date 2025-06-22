@@ -2,6 +2,12 @@
 networks:
   asa-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+          gateway: 172.25.0.1
+    attachable: true
+
 services:
   dns:
     build: 
@@ -10,6 +16,9 @@ services:
     container_name: dns
     ports:
       - "53:53/udp"
+    networks:
+      asa-network:
+        ipv4_address: 172.25.0.2
 
   proxy:
     build: 
@@ -22,7 +31,8 @@ services:
       - web1
       - web2
     networks:
-      - asa-network
+      asa-network:
+        ipv4_address: 172.25.0.3
 
   web1:
     build: 
@@ -30,7 +40,8 @@ services:
       dockerfile: Dockerfile
     container_name: web1
     networks:
-      - asa-network
+      asa-network:
+        ipv4_address: 172.25.0.4
 
   web2:
     build: 
@@ -38,4 +49,5 @@ services:
       dockerfile: Dockerfile
     container_name: web2
     networks:
-      - asa-network
+      asa-network:
+        ipv4_address: 172.25.0.5

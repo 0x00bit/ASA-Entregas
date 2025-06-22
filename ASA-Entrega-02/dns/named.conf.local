@@ -7,7 +7,6 @@ zone "asa.br"{
     file "/etc/bind/db.asa.br";
     allow-transfer {
         127.0.0.1;
-        172.18.0.0/16;
     };
 };
 
