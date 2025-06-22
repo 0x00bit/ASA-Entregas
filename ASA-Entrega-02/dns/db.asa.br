@@ -13,5 +13,5 @@ $TTL	604800
 @		IN	A	    127.0.0.1
 www		IN	A	    127.0.0.1
 portal	IN	CNAME	www
-sales	IN	CNAME	www
-sofia	IN	CNAME	www
+julio	IN	CNAME	www
+magnus	IN	CNAME	www
